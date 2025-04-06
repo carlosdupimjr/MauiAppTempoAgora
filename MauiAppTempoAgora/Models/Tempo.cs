@@ -17,5 +17,8 @@
         public double? speed { get; set; }
         public string? main { get; set; }
         public string? description { get; set; }
+
+        public string? name { get; set; }
+        public int? cod { get; set; }
     }
 }

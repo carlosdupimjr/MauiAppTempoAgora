@@ -10,7 +10,7 @@ namespace MauiAppTempoAgora
         public MainPage()
         {
             InitializeComponent();
-        }      
+        }
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
@@ -22,6 +22,7 @@ namespace MauiAppTempoAgora
                     Tempo? t = await DataService.GetPrevisao(txt_cidade.Text);
 
                     if (t != null)
+
                     {
                         string dados_previsao = "";
 
@@ -33,14 +34,16 @@ namespace MauiAppTempoAgora
                                          $"Temp Min: {t.temp_min} \n" +
                                          $"Descrição: {t.description} \n" +
                                          $"Velocidade do vento: {t.speed} \n" +
-                                         $"Visibilidade: {t.visibility} \n";
+                                         $"Visibilidade: {t.visibility} \n" +
+                                         $"Nome: {t.name} \n" +
+                                         $"Código: {t.cod} \n";
 
 
                         lbl_res.Text = dados_previsao;
-
                     }
                     else
                     {
+                        await DisplayAlert("Município não localizado", "Favor inserir nome válido", "OK");
                         lbl_res.Text = "Sem dados de Previsão";
                     }
                 }
@@ -55,5 +58,4 @@ namespace MauiAppTempoAgora
             }
         }
     }
-
 }
